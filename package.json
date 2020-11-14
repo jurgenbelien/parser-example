@@ -1,0 +1,27 @@
+{
+  "name": "parser-example",
+  "version": "1.0.0",
+  "description": "",
+  "main": "index.js",
+  "scripts": {
+    "start": "npm run nearley:compile && node index.js",
+    "nearley:compile": "nearleyc grammar.ne --out grammar.js",
+    "nearley:railroad": "nearley-railroad grammar.ne --out railroad.html"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/jurgenbelien/parser-example.git"
+  },
+  "author": "",
+  "license": "ISC",
+  "bugs": {
+    "url": "https://github.com/jurgenbelien/parser-example/issues"
+  },
+  "homepage": "https://github.com/jurgenbelien/parser-example#readme",
+  "devDependencies": {
+    "nearley": "^2.19.7"
+  },
+  "dependencies": {
+    "moo": "^0.5.1"
+  }
+}
