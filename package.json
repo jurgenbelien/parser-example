@@ -6,6 +6,7 @@
   "scripts": {
     "start": "node index.js",
     "dev": "chokidar \"grammar.ne\" -c \"npm run nearley\"",
+    "test": "npm run nearley:test",
     "nearley": "run-s nearley:*",
     "nearley:compile": "nearleyc grammar.ne --out grammar.js",
     "nearley:test": "ava grammar.test.js",
