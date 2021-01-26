@@ -8,28 +8,17 @@
 const lexer = require('./lexer');
 
 const ignore = () => null;
-const value = ([ value ]) => value;
 %}
+
 @lexer lexer
 
-board -> nl:? (line line line) nl:? {%
-        ([_, lines]) => lines
-%}
+statement -> ( quantity ws:? ):+
 
-line  -> ws:? (cell cell cell) ws:? nl {%
-        ([_, cells]) => cells
-%}
+quantity  -> number unit
 
-cell  -> ws:? ( x | o | _ ) ws:? {%
-        ([_, [cell]]) => cell
-%}
+number    -> %number
 
-x     -> %x {% value %}
+unit      -> ( %minute | %hour | %day | %week )
 
-o     -> %o {% value %}
-
-_     -> %_ {% value %}
-
-ws    -> %ws {% ignore %}
-
-nl    -> %nl {% ignore %}
+ws        -> %ws
+          {% ignore %}

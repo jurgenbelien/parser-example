@@ -7,10 +7,21 @@ const moo = require('moo')
  * occur before less specific matches.
  */
 
+const ws = /[ \t]+/; /* whitespace */
+const number = /(?:[1-9][0-9]*|0)(?:\.[0-9]+)?/;
+// Keywords are special! See https://github.com/no-context/moo#keywords
+const unit = {
+  match: /[a-z]+/,
+  type: moo.keywords({
+    minute: 'm',
+    hour: 'h',
+    day: 'd',
+    week: 'w',
+  })
+};
+
 module.exports = moo.compile({
-  ws: /[ \t]+/, /* whitespace */
-  o:  ['o', 'O', '0'], /* nought */
-  x:  ['x', 'X'], /* cross */
-  _:  '_', /* empty cell */
-  nl: { match: /\n/, lineBreaks: true }, /* newline */
+  unit,
+  ws,
+  number,
 });
